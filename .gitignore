@@ -1,2 +1,3 @@
 /ignoreme/
 /secure/*.json
+*__pycache__*

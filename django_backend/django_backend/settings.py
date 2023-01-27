@@ -73,11 +73,16 @@ WSGI_APPLICATION = 'django_backend.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+credentials = json.load(open(BASE_DIR / "../secure/credentials.json"))
 
 DATABASES = {
     'default': {
-        'ENGINE': 'sql_server.pyodbc',
-        'NAME': json.load(open("../secure/credentials.json"))["Test"],
+        'ENGINE': 'mssql',
+        "NAME": credentials["db_name"],
+        "USER": credentials["db_admin_user"],
+        "PASSWORD": credentials["db_admin_password"],
+        "HOST": credentials["db_uri"],
+        "PORT": "1433",
     }
 }
 
